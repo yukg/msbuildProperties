@@ -1,10 +1,150 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
+	<Target Name="dotnet6" BeforeTargets="CoreCompile">
+		<Message Text="-------------------------------------------------------------------" />
+		<Message Text="MSBuild reserved and well-known properties" />
+		<Message Text="https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-reserved-and-well-known-properties?view=vs-2022" />
+		<Message Text="-------------------------------------------------------------------" />
+		<Message Text="MSBuildBinPath=&quot;$(MSBuildBinPath)&quot;" />
+		<Message Text="MSBuildExtensionsPath=&quot;$(MSBuildExtensionsPath)&quot;" />
+		<Message Text="MSBuildExtensionsPath32=&quot;$(MSBuildExtensionsPath32)&quot;" />
+		<Message Text="MSBuildExtensionsPath64=&quot;$(MSBuildExtensionsPath64)&quot;" />
+		<Message Text="MSBuildInteractive=&quot;$(MSBuildInteractive)&quot;" />
+		<Message Text="MSBuildLastTaskResult=&quot;$(MSBuildLastTaskResult)&quot;" />
+		<Message Text="MSBuildNodeCount=&quot;$(MSBuildNodeCount)&quot;" />
+		<Message Text="MSBuildProgramFiles32=&quot;$(MSBuildProgramFiles32)&quot;" />
+		<Message Text="MSBuildProjectDefaultTargets=&quot;$(MSBuildProjectDefaultTargets)&quot;" />
+		<Message Text="MSBuildProjectDirectory=&quot;$(MSBuildProjectDirectory)&quot;" />
+		<Message Text="MSBuildProjectDirectoryNoRoot=&quot;$(MSBuildProjectDirectoryNoRoot)&quot;" />
+		<Message Text="MSBuildProjectExtension=&quot;$(MSBuildProjectExtension)&quot;" />
+		<Message Text="MSBuildProjectFile=&quot;$(MSBuildProjectFile)&quot;" />
+		<Message Text="MSBuildProjectFullPath=&quot;$(MSBuildProjectFullPath)&quot;" />
+		<Message Text="MSBuildProjectName=&quot;$(MSBuildProjectName)&quot;" />
+		<Message Text="MSBuildRuntimeType=&quot;$(MSBuildRuntimeType)&quot;" />
+		<Message Text="MSBuildStartupDirectory=&quot;$(MSBuildStartupDirectory)&quot;" />
+		<Message Text="MSBuildThisFile=&quot;$(MSBuildThisFile)&quot;" />
+		<Message Text="MSBuildThisFileDirectory=&quot;$(MSBuildThisFileDirectory)&quot;" />
+		<Message Text="MSBuildThisFileDirectoryNoRoot=&quot;$(MSBuildThisFileDirectoryNoRoot)&quot;" />
+		<Message Text="MSBuildThisFileExtension=&quot;$(MSBuildThisFileExtension)&quot;" />
+		<Message Text="MSBuildThisFileFullPath=&quot;$(MSBuildThisFileFullPath)&quot;" />
+		<Message Text="MSBuildThisFileName=&quot;$(MSBuildThisFileName)&quot;" />
+		<Message Text="MSBuildToolsPath=&quot;$(MSBuildToolsPath)&quot;" />
+		<Message Text="MSBuildToolsVersion=&quot;$(MSBuildToolsVersion)&quot;" />
+		<Message Text="MSBuildVersion=&quot;$(MSBuildVersion)&quot;" />
+		<Message Text="MSBuildAssemblyVersion=&quot;$(MSBuildAssemblyVersion)&quot;" />
+		<Message Text="MSBuildFileVersion=&quot;$(MSBuildFileVersion)&quot;" />
+		<Message Text="MSBuildSemanticVersion=&quot;$(MSBuildSemanticVersion)&quot;" />
+
+		<Message Text="-------------------------------------------------------------------" />
+		<Message Text="Common MSBuild project properties" />
+		<Message Text="https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties?view=vs-2022" />
+		<Message Text="-------------------------------------------------------------------" />
+		<Message Text="AdditionalLibPaths=&quot;$(AdditionalLibPaths)&quot;" />
+		<Message Text="AddModules=&quot;$(AddModules)&quot;" />
+		<Message Text="ALToolPath=&quot;$(ALToolPath)&quot;" />
+		<Message Text="ApplicationIcon=&quot;$(ApplicationIcon)&quot;" />
+		<Message Text="ApplicationManifest=&quot;$(ApplicationManifest)&quot;" />
+		<Message Text="AssemblyOriginatorKeyFile=&quot;$(AssemblyOriginatorKeyFile)&quot;" />
+		<Message Text="AssemblySearchPaths=&quot;$(AssemblySearchPaths)&quot;" />
+		<Message Text="AssemblyName=&quot;$(AssemblyName)&quot;" />
+		<Message Text="BaseAddress=&quot;$(BaseAddress)&quot;" />
+		<Message Text="BaseIntermediateOutputPath=&quot;$(BaseIntermediateOutputPath)&quot;" />
+		<Message Text="BaseOutputPath=&quot;$(BaseOutputPath)&quot;" />
+		<Message Text="BuildInParallel=&quot;$(BuildInParallel)&quot;" />
+		<Message Text="BuildProjectReferences=&quot;$(BuildProjectReferences)&quot;" />
+		<Message Text="CleanFile=&quot;$(CleanFile)&quot;" />
+		<Message Text="CodePage=&quot;$(CodePage)&quot;" />
+		<Message Text="CompilerResponseFile=&quot;$(CompilerResponseFile)&quot;" />
+		<Message Text="Configuration=&quot;$(Configuration)&quot;" />
+		<Message Text="CscToolPath=&quot;$(CscToolPath)&quot;" />
+		<Message Text="CustomBeforeMicrosoftCommonTargets=&quot;$(CustomBeforeMicrosoftCommonTargets)&quot;" />
+		<Message Text="DebugSymbols=&quot;$(DebugSymbols)&quot;" />
+		<Message Text="DebugType=&quot;$(DebugType)&quot;" />
+		<Message Text="DefineConstants=&quot;$(DefineConstants)&quot;" />
+		<Message Text="DefineDebug=&quot;$(DefineDebug)&quot;" />
+		<Message Text="DefineTrace=&quot;$(DefineTrace)&quot;" />
+		<Message Text="DelaySign=&quot;$(DelaySign)&quot;" />
+		<Message Text="Deterministic=&quot;$(Deterministic)&quot;" />
+		<Message Text="DisableFastUpToDateCheck=&quot;$(DisableFastUpToDateCheck)&quot;" />
+		<Message Text="DocumentationFile=&quot;$(DocumentationFile)&quot;" />
+		<Message Text="ErrorReport=&quot;$(ErrorReport)&quot;" />
+		<Message Text="ExcludeDeploymentUrl=&quot;$(ExcludeDeploymentUrl)&quot;" />
+		<Message Text="FileAlignment=&quot;$(FileAlignment)&quot;" />
+		<Message Text="FrameworkPathOverride=&quot;$(FrameworkPathOverride)&quot;" />
+		<Message Text="GenerateDocumentation=&quot;$(GenerateDocumentation)&quot;" />
+		<Message Text="GenerateFullPaths=&quot;$(GenerateFullPaths)&quot;" />
+		<Message Text="GenerateSerializationAssemblies=&quot;$(GenerateSerializationAssemblies)&quot;" />
+		<Message Text="IntermediateOutputPath=&quot;$(IntermediateOutputPath)&quot;" />
+		<Message Text="KeyContainerName=&quot;$(KeyContainerName)&quot;" />
+		<Message Text="KeyOriginatorFile=&quot;$(KeyOriginatorFile)&quot;" />
+		<Message Text="ModuleAssemblyName=&quot;$(ModuleAssemblyName)&quot;" />
+		<Message Text="MSBuildProjectExtensionsPath=&quot;$(MSBuildProjectExtensionsPath)&quot;" />
+		<Message Text="NoLogo=&quot;$(NoLogo)&quot;" />
+		<Message Text="NoStdLib=&quot;$(NoStdLib)&quot;" />
+		<Message Text="NoVBRuntimeReference=&quot;$(NoVBRuntimeReference)&quot;" />
+		<Message Text="NoWarn=&quot;$(NoWarn)&quot;" />
+		<Message Text="NoWin32Manifest=&quot;$(NoWin32Manifest)&quot;" />
+		<Message Text="Optimize=&quot;$(Optimize)&quot;" />
+		<Message Text="OptionCompare=&quot;$(OptionCompare)&quot;" />
+		<Message Text="OptionExplicit=&quot;$(OptionExplicit)&quot;" />
+		<Message Text="OptionInfer=&quot;$(OptionInfer)&quot;" />
+		<Message Text="OptionStrict=&quot;$(OptionStrict)&quot;" />
+		<Message Text="OutDir=&quot;$(OutDir)&quot;" />
+		<Message Text="OutputPath=&quot;$(OutputPath)&quot;" />
+		<Message Text="OutputType=&quot;$(OutputType)&quot;" />
+		<Message Text="OverwriteReadOnlyFiles=&quot;$(OverwriteReadOnlyFiles)&quot;" />
+		<Message Text="PathMap=&quot;$(PathMap)&quot;" />
+		<Message Text="PdbFile=&quot;$(PdbFile)&quot;" />
+		<Message Text="Platform=&quot;$(Platform)&quot;" />
+		<Message Text="ProcessorArchitecture=&quot;$(ProcessorArchitecture)&quot;" />
+		<Message Text="ProduceOnlyReferenceAssembly=&quot;$(ProduceOnlyReferenceAssembly)&quot;" />
+		<Message Text="ProduceReferenceAssembly=&quot;$(ProduceReferenceAssembly)&quot;" />
+		<Message Text="RemoveIntegerChecks=&quot;$(RemoveIntegerChecks)&quot;" />
+		<Message Text="RootNamespace=&quot;$(RootNamespace)&quot;" />
+		<Message Text="Satellite_AlgorithmId=&quot;$(Satellite_AlgorithmId)&quot;" />
+		<Message Text="Satellite_BaseAddress=&quot;$(Satellite_BaseAddress)&quot;" />
+		<Message Text="Satellite_CompanyName=&quot;$(Satellite_CompanyName)&quot;" />
+		<Message Text="Satellite_Configuration=&quot;$(Satellite_Configuration)&quot;" />
+		<Message Text="Satellite_Description=&quot;$(Satellite_Description)&quot;" />
+		<Message Text="Satellite_EvidenceFile=&quot;$(Satellite_EvidenceFile)&quot;" />
+		<Message Text="Satellite_FileVersion=&quot;$(Satellite_FileVersion)&quot;" />
+		<Message Text="Satellite_Flags=&quot;$(Satellite_Flags)&quot;" />
+		<Message Text="Satellite_GenerateFullPaths=&quot;$(Satellite_GenerateFullPaths)&quot;" />
+		<Message Text="Satellite_LinkResource=&quot;$(Satellite_LinkResource)&quot;" />
+		<Message Text="Satellite_MainEntryPoint=&quot;$(Satellite_MainEntryPoint)&quot;" />
+		<Message Text="Satellite_ProductName=&quot;$(Satellite_ProductName)&quot;" />
+		<Message Text="Satellite_ProductVersion=&quot;$(Satellite_ProductVersion)&quot;" />
+		<Message Text="Satellite_TargetType=&quot;$(Satellite_TargetType)&quot;" />
+		<Message Text="Satellite_Title=&quot;$(Satellite_Title)&quot;" />
+		<Message Text="Satellite_Trademark=&quot;$(Satellite_Trademark)&quot;" />
+		<Message Text="Satellite_Version=&quot;$(Satellite_Version)&quot;" />
+		<Message Text="Satellite_Win32Icon=&quot;$(Satellite_Win32Icon)&quot;" />
+		<Message Text="Satellite_Win32Resource=&quot;$(Satellite_Win32Resource)&quot;" />
+		<Message Text="SGenToolPath=&quot;$(SGenToolPath)&quot;" />
+		<Message Text="SGenUseProxyTypes=&quot;$(SGenUseProxyTypes)&quot;" />
+		<Message Text="SkipInvalidConfigurations=&quot;$(SkipInvalidConfigurations)&quot;" />
+		<Message Text="StartupObject=&quot;$(StartupObject)&quot;" />
+		<Message Text="SubsystemVersion=&quot;$(SubsystemVersion)&quot;" />
+		<Message Text="TargetCompactFramework=&quot;$(TargetCompactFramework)&quot;" />
+		<Message Text="TargetFrameworkVersion=&quot;$(TargetFrameworkVersion)&quot;" />
+		<Message Text="TreatWarningsAsErrors=&quot;$(TreatWarningsAsErrors)&quot;" />
+		<Message Text="UseCommonOutputDirectory=&quot;$(UseCommonOutputDirectory)&quot;" />
+		<Message Text="UseHostCompilerIfAvailable=&quot;$(UseHostCompilerIfAvailable)&quot;" />
+		<Message Text="Utf8Output=&quot;$(Utf8Output)&quot;" />
+		<Message Text="VbcToolPath=&quot;$(VbcToolPath)&quot;" />
+		<Message Text="VbcVerbosity=&quot;$(VbcVerbosity)&quot;" />
+		<Message Text="VisualStudioVersion=&quot;$(VisualStudioVersion)&quot;" />
+		<Message Text="WarningsAsErrors=&quot;$(WarningsAsErrors)&quot;" />
+		<Message Text="WarningsNotAsErrors=&quot;$(WarningsNotAsErrors)&quot;" />
+		<Message Text="Win32Manifest=&quot;$(Win32Manifest)&quot;" />
+		<Message Text="Win32Resource=&quot;$(Win32Resource)&quot;" />
+
+	</Target>
 </Project>

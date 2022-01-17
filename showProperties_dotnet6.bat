@@ -1,0 +1,1 @@
+dotnet build dotnet6\dotnet6.csproj -v n
